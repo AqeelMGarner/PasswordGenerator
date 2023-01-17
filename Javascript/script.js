@@ -90,14 +90,18 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-
+let passwordOptions = ["Lowercase", " Uppercase", " Numbers", " Special Characters" ];
+let userChoice = prompt("Please select an option: " + passwordOptions);
+console.log("You chosen: " + userChoice);
 }
-
+console.log(getPasswordOptions());
 // Function for getting a random element from an array
-function getRandom(arr) {
-
+let allCharacters = [specialCharacters, numericCharacters, lowerCasedCharacters, upperCasedCharacters]
+function getRandom() {
+  let userChoice = allCharacters[Math.floor(Math.random() * allCharacters.length)];
+  return userChoice
 }
-
+console.log(getRandom());
 // Function to generate password with user input
 function generatePassword() {
 
