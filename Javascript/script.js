@@ -105,6 +105,7 @@ console.log(getRandom());
 // Function to generate password with user input
 function generatePassword() {
   //for in loop
+  // return password generated
 
 }
 
