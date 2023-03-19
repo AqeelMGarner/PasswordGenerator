@@ -90,23 +90,57 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-let passwordOptions = ["Lowercase", " Uppercase", " Numbers", " Special Characters" ];
-let userChoice = prompt("Please select an option: " + passwordOptions);
-console.log("You chosen: " + userChoice);
+const passwordOptions = ["Lowercase", " Uppercase", " Numbers", " Special Characters" ];
+let userChoice = prompt("Please select an option: " + passwordOptions.join(", "));
+alert("You chosen: " + userChoice);
+return userChoice;
 }
-console.log(getPasswordOptions());
+
 // Function for getting a random element from an array
-let allCharacters = [specialCharacters, numericCharacters, lowerCasedCharacters, upperCasedCharacters]
+const allCharacters = [specialCharacters, numericCharacters, lowerCasedCharacters, upperCasedCharacters]
+
 function getRandom() {
-  let userChoice = allCharacters[Math.floor(Math.random() * allCharacters.length)];
-  return userChoice
+  let randomArray = allCharacters[Math.floor(Math.random() * allCharacters.length)];
+  let randomChar = randomArray[Math.floor(math.random() * randomArray.length)];
+  return randomChar
 }
-console.log(getRandom());
 // Function to generate password with user input
 function generatePassword() {
-  //for in loop
-  // return password generated
-
+  let passwordLength = parseInt(prompt("Enter length of password (must be 8 - 20 character long):"));
+  //Checks password length 
+  if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 20) {
+  alert("wrong input! password length must be 8 - 20 character long.");
+  return "";
+  }
+  let password = "";
+  const selectedSets = [];
+  // User's choices for character sets
+  let userChoice = getPasswordOptions();
+  switch(userChoice) {
+    case "Lowercase":
+      selectedSets.push(allCharacters.lowerCasedCharacters);
+      break;
+    case "Uppercase":
+      selectedSets.push(allCharacters.upperCasedCharacters);
+      break;
+    case "Numbers":
+      selectedSets.push(allCharacters.numericCharacters);
+      break;
+    case "Special characters":
+      selectedSets.push(allCharacters.specialCharacters);
+      break;
+    default:
+      alert("Invalid choice.");
+      return "";  
+  }
+  for (let i = 0; i < passwordLength; i++) {
+    const randomSetIndex = Math.floor(Math.random() * selectedSets.length);
+    const selectedSet = selectedSets[randomSetIndex];
+    const randomCharIndex = Math.floor(Math.random() * selectedSet.length);
+    const randomChar = selectedSet.charAt (randomCharIndex);
+    password += randomChar;
+  }
+  return password
 }
 
 // Get references to the #generate element
