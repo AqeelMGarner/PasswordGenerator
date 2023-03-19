@@ -90,26 +90,26 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-const passwordOptions = ["Lowercase", " Uppercase", " Numbers", " Special Characters" ];
+const passwordOptions = ["Lowercase", "Uppercase", "Numbers", "Special Characters"];
 let userChoice = prompt("Please select an option: " + passwordOptions.join(", "));
 alert("You chosen: " + userChoice);
 return userChoice;
-}
+};
 
 // Function for getting a random element from an array
 const allCharacters = [specialCharacters, numericCharacters, lowerCasedCharacters, upperCasedCharacters]
 
 function getRandom() {
-  let randomArray = allCharacters[Math.floor(Math.random() * allCharacters.length)];
+  let randomArray = Object.values(allCharacters)[Math.floor(Math.random() * Object.values(allCharacters).length)];
   let randomChar = randomArray[Math.floor(math.random() * randomArray.length)];
   return randomChar
-}
+};
 // Function to generate password with user input
 function generatePassword() {
-  let passwordLength = parseInt(prompt("Enter length of password (must be 8 - 20 character long):"));
+  let passwordLength = parseInt(prompt("Enter length of password (must be 8 - 128 characters long):"));
   //Checks password length 
-  if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 20) {
-  alert("wrong input! password length must be 8 - 20 character long.");
+  if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
+  alert("wrong input! password length must be 8 - 128 characters long.");
   return "";
   }
   let password = "";
@@ -136,12 +136,11 @@ function generatePassword() {
   for (let i = 0; i < passwordLength; i++) {
     const randomSetIndex = Math.floor(Math.random() * selectedSets.length);
     const selectedSet = selectedSets[randomSetIndex];
-    const randomCharIndex = Math.floor(Math.random() * selectedSet.length);
-    const randomChar = selectedSet.charAt (randomCharIndex);
+    const randomChar = getRandom(selectedSet);
     password += randomChar;
-  }
-  return password
-}
+  };
+  return password;
+};
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');

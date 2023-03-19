@@ -10,7 +10,10 @@ N/A
 
 ## Usage
 
-The usage of this application is stated in the description but there is also a assets/images folder that will have screenshots of how the application works.
+The usage of this application is stated in the description but there is a assets folder that will have screenshots of how the application works.
+![alt text](assets/Screenshot%202023-03-19%2010.09.28.png)
+![alt text](assets/Screenshot%202023-03-19%2010.09.37.png)
+![alt text](assets/Screenshot%202023-03-19%2010.09.59.png)
 
 ## Credits
 
@@ -19,4 +22,7 @@ N/A
 ## License
 
 please refer to the LICENSE in the repo 
+
+## link
+https://aqeelmgarner.github.io/PasswordGenerator/
 
